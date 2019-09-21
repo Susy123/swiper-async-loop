@@ -1,5 +1,4 @@
 <!--loop为true情况下，动态插入的slide会顺序错乱 1231423 向左滑将一直看不到4一直321有时能看到3重复 向右滑是 12314231423-->
-<!--没能复现东楠所说的会多一个slide的问题 123141，但是猜测她也是类似的问题-->
 <!--这个问题是swiper本身的bug，新增的数据直接进入dom的最后一个，而在loop里顺序是和无loop不同的，其实应该重新生成swiper，才能有正确的顺序-->
 <!--靠在swiper 上加 v-if="swiperSlides.length"并不能够实现刷新，尝试通过调用api方法来实现，update方法和updateSlide都试了也不行-->
 <!--最终的解决方案：this.swiperSlides = [];然后在nextTick 里再赋值，就能保证顺序的问题，4会插在3后面；v-if="swiperSlides.length>0"也要加，否则不能autoplay,如果本来就不需要autoplay则可以不加-->
